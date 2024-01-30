@@ -16,8 +16,8 @@ def dag(m):
 def p_4(s):
     return (2**18)*(s**4)*np.exp(-64*s**2/(9*np.pi))/((3**6)*(np.pi**3)) # Wigner surmise pour GSE (beta = 4)
 
-N = 500 # nombre de tirages
-n = 50 # taille de la matrice 
+N = 2000 # nombre de tirages
+n = 8 # taille de la matrice 
 spacing = np.array([])
 
 # {e1, e2, e3} une base formee par les matrices de Pauli
@@ -65,9 +65,8 @@ plt.xlim(0,3.1)
 plt.legend(fontsize=14, loc=0)
 plt.xlabel(r'$s$', size=20)
 plt.ylabel(r'$p(s)$', size=20)
-plt.title('Level spacing distribution, GSE (n=%s)'%n, size=16)
+plt.title('Level spacing distribution of GSE (n=%s, %s samples)'%(n, N), size=13)
 plt.show()
 
-# remarque: Pour les deux variantes de construction de la matrice quternionique,
-# la convergence vers la loi attendue est moins bonne que celle pour les ensembles GOE et GUE.
-# La raison reside probablement dans la construction de la matrice quaternionique.
+# Plus n est grand moins la convergence est bonne (pic de l'histogramme se deplace vers
+# la gauche et la "queue" est moins evanaissante).

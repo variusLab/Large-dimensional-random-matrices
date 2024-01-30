@@ -3,7 +3,7 @@ Les matrices de l'ensemble unitaire gaussien (GUE) sont hermitiennes.
 Leurs entrees sont des variables aleatoires gaussiennes complexes (partie reelle et imaginaire ~ N(0,1))
 independantes identiquement distribuees. Le programme:
 - calcule la distribution d'ecarts entre les valeurs propres d'une telle matrice.
-- compare le resultat (moyennage sur plusieurs tirages de matrices)
+- compare le resultat (obtenu sur plusieurs tirages de matrices)
   avec l'expression analytique : 'Wigner surmise' pour GUE
 '''
 
@@ -16,8 +16,8 @@ def dag(m):
 def expected_p(s):
     return 32*(s**2)*np.exp(-4*s*s/np.pi)/(np.pi**2) # Wigner surmise pour GUE (beta = 2)
 
-N = 200 # nombre de tirages aleatoires
-n = 50  # taille de la matrice
+N = 700 # nombre de tirages 
+n = 10  # taille de la matrice
 spacing = np.array([])
 for i in range(N):    
     U = np.random.normal(0,1,(n,n))+1j*np.random.normal(0,1,(n,n)) # matrice nxn complexe gaussienne
@@ -37,5 +37,5 @@ plt.xlim(0,3.1)
 plt.legend(fontsize=14, loc=0)
 plt.xlabel(r'$s$', size=20)
 plt.ylabel(r'$p(s)$', size=20)
-plt.title('Level spacing distribution, GUE (n=%s)'%n, size=16)
+plt.title('Level spacing distribution of GUE (n=%s, %s samples)'%(n, N), size=13)
 plt.show()

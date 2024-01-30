@@ -15,8 +15,8 @@ def W_SCircle(x): # Wigner semicircle law
 def dag(m):
     return np.transpose(np.conjugate(m))    
 
-N = 200 # nombre de tirages (on etudie la convergence en distribution)
-m = 50 # taille de la matrice
+N = 500 # nombre de tirages 
+m = 20 # taille de la matrice
 evals = np.array([]) # contiendra N*m elements (valeurs propres des matrices aleatoires de taille mxm sur N tirages)
 for i in range(N):
     # cas GUE
@@ -46,7 +46,7 @@ plt.xlabel(r'$\lambda/\sqrt{n \sigma^2}$', size=14)
 plt.ylabel(r'$\langle \rho \rangle$', size=20) 
 plt.ylim(ymax=0.37)
 plt.xlim(-2.5, 2.5)
-plt.title('Spectral density of GUE (n=%s)\n average over %s samples'%(m, N), size=16)
+plt.title('Spectral density of GUE (n=%s, %s samples)'%(m, N), size=15)
 plt.tight_layout()
 plt.show()
 

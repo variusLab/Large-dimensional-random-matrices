@@ -13,13 +13,13 @@ import matplotlib.pyplot as plt
 def expected_p(s):
     return 0.5*np.pi*s*np.exp(-np.pi*s*s/4.) # Wigner surmise pour GOE (beta = 1)
 
-N = 200 # nombre de tirages aleatoires
-n = 50  # taille de la matrice
+N = 2000 # nombre de tirages 
+n = 10  # taille de la matrice
 spacing = np.array([])
 
 for i in range(N):
     U = np.random.normal(0,1,(n,n)) # matrice nxn gaussienne reelle
-    # for i in range(n): U[i,i] = np.random.normal(0,2)
+    # for i in range(n): U[i,i] = np.random.normal(0, np.sqrt(2.))
     U = (U + U.T)/np.sqrt(2.)   # U matrice symetrique
     evals = np.linalg.eigvalsh(U)  # valeurs propres de U (facultatif: UPLO='U')
     evals = np.sort(np.real(evals))
@@ -36,5 +36,5 @@ plt.xlim(0,3.5)
 plt.legend(fontsize=14, loc=0)
 plt.xlabel(r'$s$', size=20)
 plt.ylabel(r'$p(s)$', size=20)
-plt.title('Level spacing distribution, GOE (n=%s)'%n, size=16)
+plt.title('Level spacing distribution of GOE (n=%s, %s samples)'%(n, N), size=13)
 plt.show()

@@ -26,8 +26,8 @@ def dag(m):      # conjugue hermitien de la matrice m
 def funct(t, y): # vecteur dy/dt a deux composantes, avec y=(q, dq/dt), q est la sol de eq. diff. de Painleve II  
     return [y[1], t*y[0] + 2.*y[0]**3]
 
-N = 1000    # nombre de tirages de matrices 
-n = 20      # taille de la matrice 
+N = 3500    # nombre de tirages de matrices 
+n = 10      # taille de la matrice 
 
 tmin = -17. # borne inferieure de la grille pour la fonction q(t) (tmin = -8 ok)
 tmax = 6.   # jour le role de +infinite (q(tmax)=Ai(tmax)) (tmax = 5 ok)
@@ -54,7 +54,7 @@ for i in range(l):
 
 F2 = np.exp(-integ)      # fonction F_2(x)
 f2 = np.gradient(F2)     # fonction f_2(x)=F_2'(x)
-f2 = f2/simpson(f2, x)   # renormalisation (necessaire pour une raison qui reste a determiner)
+f2 = f2/simpson(f2, x)   # normalisation
 
 
 for i in range(N): # Tirage de N matrices aleatoires hermitiennes (n,n)
@@ -71,10 +71,9 @@ plt.hist(max_eval, bins='rice', density=True, color='green', alpha=0.3, edgecolo
 plt.plot(x, f2, 'r-', linewidth=1.5, label='Tracy-Widom law')
 plt.legend(fontsize=13, loc='upper right')
 plt.xlabel(r'$\left(\lambda_{max}-2\sqrt{n}\right)n^{1/6}$', size=13)
-plt.title('Distribution of the largest eigenvalue of GUE (n=%s)\naverage over N=%s samples'%(n, N), size=12, pad=10)
+plt.title('Distribution of the largest eigenvalue of GUE (n=%s, %s samples)'%(n, N), size=12, pad=10)
 plt.xlim(-5.2, 2.2)
 #plt.tight_layout()
-
 
 plt.figure(2)
 plt.plot(t, q, label='q(x)', linestyle=':', color='blue')
@@ -82,10 +81,11 @@ plt.plot(x, airy(x)[0], label='Ai(x)')
 plt.legend(loc='best')
 plt.grid()
 #plt.xlim(-5,2)
+
 plt.show()
 
 # remarque: la version
 # sol = odeint(funct, y0, trevesed) # integration de infty a tmin (t etant inverse) avec signature funct(y, t)
 # q = sol[:,0]   # dans le sens de t décroissant
 # q = np.flip(q) # dans le sens de t croissant
-# produit un warning?
+# produit un warning. A reexaminer la version avec odeint.
