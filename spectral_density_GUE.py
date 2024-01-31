@@ -20,7 +20,7 @@ m = 20 # taille de la matrice
 evals = np.array([]) # contiendra N*m elements (valeurs propres des matrices aleatoires de taille mxm sur N tirages)
 for i in range(N):
     # cas GUE    
-    g = np.random.normal(0, 1./np.sqrt(2.), (n,n))+1j*np.random.normal(0, 1./np.sqrt(2.), (n,n))
+    g = np.random.normal(0, 1./np.sqrt(2.), (m,m))+1j*np.random.normal(0, 1./np.sqrt(2.), (m,m))
     h = (g + dag(g))/np.sqrt(2.) # h matrice hermitienne
     # cas GOE
     #g = np.random.normal(0,1,(m,m)) 
