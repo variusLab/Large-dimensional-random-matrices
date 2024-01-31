@@ -20,7 +20,7 @@ N = 700 # nombre de tirages
 n = 10  # taille de la matrice
 spacing = np.array([])
 for i in range(N):    
-    U = np.random.normal(0,1,(n,n))+1j*np.random.normal(0,1,(n,n)) # matrice nxn complexe gaussienne
+    U = np.random.normal(0, 1./np.sqrt(2.), (n,n)) + 1j*np.random.normal(0, 1./np.sqrt(2.), (n,n)) # matrice nxn complexe gaussienne
     U = (U + dag(U))/np.sqrt(2.)   # U matrice hermitienne
     evals = np.linalg.eigvalsh(U)  # valeurs propres de U
     evals = np.sort(np.real(evals))
