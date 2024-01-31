@@ -58,8 +58,8 @@ f2 = f2/simpson(f2, x)   # normalisation
 
 
 for i in range(N): # Tirage de N matrices aleatoires hermitiennes (n,n)
-    U = np.random.normal(0,1,(n,n))+1j*np.random.normal(0,1,(n,n))
-    U = (U + dag(U))/2. # U est hermitienne    
+    U = np.random.normal(0, 1./np.sqrt(2.), (n,n))+1j*np.random.normal(0, 1./np.sqrt(2.), (n,n))
+    U = (U + dag(U))/np.sqrt(2.) # U est hermitienne    
     evals = np.linalg.eigvalsh(U) # valeurs propres de U
     max_eval[i] = np.max(evals)   # on retient la valeur propre maximale de U
 
