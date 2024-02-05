@@ -5,7 +5,7 @@ On considère un ensemble gaussien de valeur $\beta$ donnée ($\beta =1$ pour l'
  
 Soit $\lambda_{max}$ une variable aléatoire correspondant à la plus grande valeur propre de la matrice $M$. 
 La suite $`\left(X_n \right)_{n \geq 0}`$ de variables aléatoires $$X_n:=\left( \frac{\lambda_{max}}{\sigma} - 2\sqrt{n} \right)n^{1/6}$$
-converge en loi vers la distribution dite de Tracy-Widom notée $f_{\beta}$ de fonction de partition $`F_{\beta}`$ ($`F'_\beta = f_\beta`$):
+converge en loi vers la distribution dite de Tracy-Widom notée $f_{\beta}$ de fonction de répartition $`F_{\beta}`$ ($`F'_\beta = f_\beta`$):
 ```math
 \lim_{n\rightarrow +\infty} \mathbb{P}\left(X_n \leq s \right) = F_{\beta}(s)
 ```
